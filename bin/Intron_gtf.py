@@ -175,7 +175,7 @@ def attribute_intron(gtf_file_list):
         for i in range(index_s, index_e + 1):
             if (sp[0], exon_strand, i) in pos:
                 for j in pos[sp[0], exon_strand, i]:
-                    if int(sp[3]) < int(intron[j][3]) and int(sp[4]) > int(intron[j][4]):
+                    if int(sp[3]) > int(intron[j][4]) or int(sp[4]) < int(intron[j][3]):
                         continue
                     if overlap(int(sp[3]), int(sp[4]), intron[j][3], intron[j][4]) > 0:
                         intron[j][0] = 'false'
